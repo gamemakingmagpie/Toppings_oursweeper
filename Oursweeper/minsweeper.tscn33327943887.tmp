@@ -1,0 +1,449 @@
+[gd_scene load_steps=12 format=3 uid="uid://bhkrv3ne11x5y"]
+
+[ext_resource type="Script" uid="uid://sopm4fkqgyjh" path="res://minsweeper.gd" id="1_qqbt5"]
+[ext_resource type="Texture2D" uid="uid://cpl3n4io5cau" path="res://UI_Element.svg" id="2_llo4g"]
+[ext_resource type="Script" uid="uid://cec0t1ud2kubx" path="res://cursor.gd" id="3_ih0ty"]
+[ext_resource type="AudioStream" uid="uid://cqxj4glv8wan0" path="res://SFX/Interaction Fasten.wav" id="4_llo4g"]
+[ext_resource type="StyleBox" uid="uid://lrcsb7wnp1we" path="res://tile_normal.tres" id="5_gycfy"]
+[ext_resource type="Script" uid="uid://d0f2kgctc3c4g" path="res://popup_child.gd" id="5_lc8wi"]
+[ext_resource type="StyleBox" uid="uid://bkmq2wklrfus0" path="res://tile_pressed.tres" id="7_rgwuc"]
+[ext_resource type="PackedScene" path="res://ChatReceiver.tscn" id="8_4phil"]
+[ext_resource type="Texture2D" uid="uid://cu0fvaa5oqdl5" path="res://Menu.png" id="9_g8owg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rgwuc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g8owg"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qqbt5")
+width = 10
+height = 10
+total_mines = 20
+
+[node name="TileGrid_Player" type="GridContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+
+[node name="Window" type="Window" parent="."]
+unique_name_in_owner = true
+gui_embed_subwindows = true
+oversampling_override = 1.0
+mode = 2
+title = "시청자용 캡처"
+position = Vector2i(0, 36)
+size = Vector2i(1600, 900)
+visible = false
+unresizable = true
+
+[node name="TileGrid_Viewer" type="GridContainer" parent="Window"]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+
+[node name="Cursor2" type="TextureRect" parent="Window"]
+unique_name_in_owner = true
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("2_llo4g")
+expand_mode = 1
+script = ExtResource("3_ih0ty")
+
+[node name="Cursor" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("3_ih0ty")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_llo4g")
+
+[node name="StartPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.0
+offset_top = -158.0
+offset_right = 151.0
+offset_bottom = 158.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("5_gycfy")
+
+[node name="MarginContainer" type="MarginContainer" parent="StartPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StartPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="StartPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="StartPanel/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Easy" type="Button" parent="StartPanel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = ExtResource("5_gycfy")
+theme_override_styles/hover = ExtResource("5_gycfy")
+theme_override_styles/hover_pressed = ExtResource("7_rgwuc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rgwuc")
+text = "초급"
+
+[node name="Middle" type="Button" parent="StartPanel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = ExtResource("5_gycfy")
+theme_override_styles/hover = ExtResource("5_gycfy")
+theme_override_styles/hover_pressed = ExtResource("7_rgwuc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rgwuc")
+text = "중급"
+
+[node name="Hard" type="Button" parent="StartPanel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = ExtResource("5_gycfy")
+theme_override_styles/hover = ExtResource("5_gycfy")
+theme_override_styles/hover_pressed = ExtResource("7_rgwuc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rgwuc")
+text = "고급"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="StartPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="StartPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "가로"
+horizontal_alignment = 1
+
+[node name="Width" type="SpinBox" parent="StartPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+max_value = 50.0
+value = 10.0
+alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="StartPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="StartPanel/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "세로"
+horizontal_alignment = 1
+
+[node name="Height" type="SpinBox" parent="StartPanel/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+max_value = 30.0
+value = 10.0
+alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="StartPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="StartPanel/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "폭탄"
+horizontal_alignment = 1
+
+[node name="Bomb" type="SpinBox" parent="StartPanel/MarginContainer/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+value = 10.0
+alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="StartPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Hidden_Label" type="Label" parent="StartPanel/MarginContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+text = "히든"
+horizontal_alignment = 1
+script = ExtResource("5_lc8wi")
+
+[node name="Panel" type="PanelContainer" parent="StartPanel/MarginContainer/VBoxContainer/HBoxContainer4/Hidden_Label"]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_top = 27.0
+offset_right = 145.0
+offset_bottom = 83.0
+
+[node name="MarginContainer" type="MarginContainer" parent="StartPanel/MarginContainer/VBoxContainer/HBoxContainer4/Hidden_Label/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="RichTextLabel" parent="StartPanel/MarginContainer/VBoxContainer/HBoxContainer4/Hidden_Label/Panel/MarginContainer"]
+layout_mode = 2
+text = "플레이어게 숨겨져 있는 칸의 비율."
+
+[node name="Hidden" type="SpinBox" parent="StartPanel/MarginContainer/VBoxContainer/HBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 0.4
+alignment = 1
+
+[node name="Start" type="Button" parent="StartPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("5_gycfy")
+theme_override_styles/hover_pressed = ExtResource("7_rgwuc")
+text = "시작"
+
+[node name="ChatReceiver" parent="." instance=ExtResource("8_4phil")]
+unique_name_in_owner = true
+
+[node name="ChatSettingsPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -187.0
+offset_top = -207.0
+offset_right = 187.0
+offset_bottom = 207.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("5_gycfy")
+
+[node name="MarginContainer" type="MarginContainer" parent="ChatSettingsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ChatSettingsPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ChannelInputHBoxContainer" type="HBoxContainer" parent="ChatSettingsPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="ChatSettingsPanel/MarginContainer/VBoxContainer/ChannelInputHBoxContainer"]
+layout_mode = 2
+text = "채널 주소"
+
+[node name="ChannelIDLineEdit" type="LineEdit" parent="ChatSettingsPanel/MarginContainer/VBoxContainer/ChannelInputHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "chzzk.naver.com/live/__________"
+
+[node name="ChannelInputButton" type="Button" parent="ChatSettingsPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "입력"
+
+[node name="ChannelImage" type="TextureRect" parent="ChatSettingsPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+expand_mode = 1
+stretch_mode = 6
+
+[node name="ChannelName" type="Label" parent="ChatSettingsPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="ChannelConfirmLabel" type="Label" parent="ChatSettingsPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "이 채널이 맞나요?"
+horizontal_alignment = 1
+
+[node name="ChannelHBoxContainer" type="HBoxContainer" parent="ChatSettingsPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ChannelConfirmButton" type="Button" parent="ChatSettingsPanel/MarginContainer/VBoxContainer/ChannelHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "맞어요"
+
+[node name="ChannelCancelButton" type="Button" parent="ChatSettingsPanel/MarginContainer/VBoxContainer/ChannelHBoxContainer"]
+layout_mode = 2
+text = "아닌데"
+
+[node name="SettingsPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 44.0
+grow_horizontal = 0
+theme_override_styles/panel = ExtResource("5_gycfy")
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsPanel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="SettingsButton" type="Button" parent="SettingsPanel/MarginContainer"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_g8owg")
+icon = ExtResource("9_g8owg")
+icon_alignment = 1
+expand_icon = true
+
+[node name="AudioPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -143.0
+offset_top = -57.0
+offset_right = 143.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("5_gycfy")
+
+[node name="MarginContainer" type="MarginContainer" parent="AudioPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AudioPanel/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AudioPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="AudioLabel" type="Label" parent="AudioPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "소리 크기"
+
+[node name="AudioHSlider" type="HSlider" parent="AudioPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+value = 50.0
+
+[node name="AudioButton" type="Button" parent="AudioPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "닫기"
+
+[connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]
+[connection signal="pressed" from="StartPanel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer5/Easy" to="." method="_on_easy_pressed"]
+[connection signal="pressed" from="StartPanel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer5/Middle" to="." method="_on_middle_pressed"]
+[connection signal="pressed" from="StartPanel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer5/Hard" to="." method="_on_hard_pressed"]
+[connection signal="pressed" from="StartPanel/MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="ChannelConnected" from="ChatReceiver" to="." method="_on_chat_receiver_channel_connected"]
+[connection signal="ChannelNotExist" from="ChatReceiver" to="." method="_on_chat_receiver_channel_not_exist"]
+[connection signal="ChannelNotLive" from="ChatReceiver" to="." method="_on_chat_receiver_channel_not_live"]
+[connection signal="ChatReceived" from="ChatReceiver" to="." method="_on_chat_receiver_chat_received"]
+[connection signal="Donation" from="ChatReceiver" to="." method="_on_chat_receiver_donation"]
+[connection signal="pressed" from="ChatSettingsPanel/MarginContainer/VBoxContainer/ChannelInputButton" to="." method="_on_channel_input_button_pressed"]
+[connection signal="pressed" from="ChatSettingsPanel/MarginContainer/VBoxContainer/ChannelHBoxContainer/ChannelConfirmButton" to="." method="_on_channel_confirm_button_pressed"]
+[connection signal="pressed" from="ChatSettingsPanel/MarginContainer/VBoxContainer/ChannelHBoxContainer/ChannelCancelButton" to="." method="_on_channel_cancel_button_pressed"]
+[connection signal="pressed" from="SettingsPanel/MarginContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="drag_ended" from="AudioPanel/MarginContainer/VBoxContainer/HBoxContainer/AudioHSlider" to="." method="_on_audio_h_slider_drag_ended"]
+[connection signal="pressed" from="AudioPanel/MarginContainer/VBoxContainer/AudioButton" to="." method="_on_audio_button_pressed"]

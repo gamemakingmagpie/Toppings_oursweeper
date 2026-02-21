@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b3cukxk1vrb7s"]
+
+[ext_resource type="FontFile" uid="uid://bskdcd6ifrblo" path="res://NanumGothicExtraBold.ttf" id="1_e1x85"]
+
+[resource]
+default_font = ExtResource("1_e1x85")

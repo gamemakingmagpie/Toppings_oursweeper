@@ -1,0 +1,34 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="시청자랑 지뢰피하기"
+run/main_scene="uid://bhkrv3ne11x5y"
+config/features=PackedStringArray("4.5", "GL Compatibility")
+run/max_fps=60
+boot_splash/fullsize=false
+boot_splash/image="uid://dpqt34pinjmgc"
+config/icon="uid://dmrxdr6d5g2ti"
+
+[display]
+
+window/size/viewport_width=1600
+window/size/viewport_height=900
+window/size/resizable=false
+window/subwindows/embed_subwindows=false
+
+[gui]
+
+theme/custom="uid://b3cukxk1vrb7s"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.05490196, 0.05882353, 0.0627451, 1)

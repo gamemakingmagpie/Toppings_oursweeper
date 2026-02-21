@@ -1,0 +1,15 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=6 format=3 uid="uid://drv5a4ljbxi8w"]
+
+[ext_resource type="AudioStream" uid="uid://cv53jo50h5bro" path="res://SFX/Mine Mid-Range 001.wav" id="1_havw5"]
+[ext_resource type="AudioStream" uid="uid://dgnihitjjqtxp" path="res://SFX/Mine Mid-Range 002.wav" id="2_a3rve"]
+[ext_resource type="AudioStream" uid="uid://c1hijhwi8awqi" path="res://SFX/Mine Mid-Range 003.wav" id="3_g73uu"]
+[ext_resource type="AudioStream" uid="uid://r1fwe6dyx2kj" path="res://SFX/Mine Mid-Range 004.wav" id="4_q5ix4"]
+[ext_resource type="AudioStream" uid="uid://ccapx6boq5blm" path="res://SFX/Mine Mid-Range 005.wav" id="5_0qvkq"]
+
+[resource]
+streams_count = 5
+stream_0/stream = ExtResource("1_havw5")
+stream_1/stream = ExtResource("2_a3rve")
+stream_2/stream = ExtResource("3_g73uu")
+stream_3/stream = ExtResource("4_q5ix4")
+stream_4/stream = ExtResource("5_0qvkq")

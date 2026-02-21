@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cqxj4glv8wan0"
+path="res://.godot/imported/Interaction Fasten.wav-98b6b39bbc86f6204b25f11333b395bf.sample"
+
+[deps]
+
+source_file="res://SFX/Interaction Fasten.wav"
+dest_files=["res://.godot/imported/Interaction Fasten.wav-98b6b39bbc86f6204b25f11333b395bf.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

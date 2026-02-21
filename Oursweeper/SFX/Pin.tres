@@ -1,0 +1,15 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=6 format=3 uid="uid://wkfxp2nf1q6"]
+
+[ext_resource type="AudioStream" uid="uid://c5tddsrin364x" path="res://SFX/Grenade Pin Foley 001.wav" id="1_mxjfp"]
+[ext_resource type="AudioStream" uid="uid://b4kksjblj8p1u" path="res://SFX/Grenade Pin Foley 002.wav" id="2_5ko20"]
+[ext_resource type="AudioStream" uid="uid://dltkumf4dyny5" path="res://SFX/Grenade Pin Foley 003.wav" id="3_bwxb6"]
+[ext_resource type="AudioStream" uid="uid://bum8fn40hwm3c" path="res://SFX/Grenade Pin Foley 004.wav" id="4_m5oo6"]
+[ext_resource type="AudioStream" uid="uid://chfmh4r6womyb" path="res://SFX/Grenade Pin Foley 005.wav" id="5_yfm7k"]
+
+[resource]
+streams_count = 5
+stream_0/stream = ExtResource("1_mxjfp")
+stream_1/stream = ExtResource("2_5ko20")
+stream_2/stream = ExtResource("3_bwxb6")
+stream_3/stream = ExtResource("4_m5oo6")
+stream_4/stream = ExtResource("5_yfm7k")

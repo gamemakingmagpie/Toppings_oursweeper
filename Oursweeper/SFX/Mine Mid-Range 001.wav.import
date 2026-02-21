@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cv53jo50h5bro"
+path="res://.godot/imported/Mine Mid-Range 001.wav-63d8087c8256dfbd1fedd91afb1c4129.sample"
+
+[deps]
+
+source_file="res://SFX/Mine Mid-Range 001.wav"
+dest_files=["res://.godot/imported/Mine Mid-Range 001.wav-63d8087c8256dfbd1fedd91afb1c4129.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
